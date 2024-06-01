@@ -14,12 +14,12 @@ from io import BytesIO
 # Create your models here.
 model = None
 
-# 커스텀 손실 함수 및 메트릭 정의
+
 def load_model():
     global model
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    json_path = os.path.join(base_dir, 'myproject', 'models', 'model_ver1.json')
-    weights_path = os.path.join(base_dir, 'myproject', 'models', 'model_weights_ver1.h5')
+    json_path = os.path.join(base_dir, 'myproject', 'models', 'model.json')
+    weights_path = os.path.join(base_dir, 'myproject', 'models', 'model_weights.h5')
 
     if not os.path.exists(json_path) or not os.path.exists(weights_path):
         print(f"Model file does not exist at: {json_path} or {weights_path}")
@@ -37,25 +37,13 @@ def load_model():
         model = None
 
 
-
-# def preprocess_input(image):
-#     image = image.resize((224, 224))
-#     image = np.array(image) / 255.0
-#     image = np.expand_dims(image, axis=0)
-#     return image
-
-# def preprocess_input(image_path, target_size):
-#     image = Image.open(image_path).resize(target_size)
-#     image = img_to_array(image) / 255.0
-#     image = np.expand_dims(image, axis=0)
-#     return image
-
-
 def preprocess_input(image, target_size=(224, 224)):
     image = image.resize(target_size)
     image = img_to_array(image) / 255.0
     image = np.expand_dims(image, axis=0)
     return image
+
+
 def predict(front_image, back_image):
     global model
     if model is None:
