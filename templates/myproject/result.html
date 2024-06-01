@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+</head>
+<body>
+    <h1>Prediction Result</h1>
+    <p>{{ result }}</p>
+    <h2>Front Image:</h2>
+    <img src="{{ front_image_url }}" alt="Front Image">
+    <h2>Back Image:</h2>
+    <img src="{{ back_image_url }}" alt="Back Image">
+    <a href="{% url 'upload_image' %}">Upload another image</a>
+</body>
+</html>
