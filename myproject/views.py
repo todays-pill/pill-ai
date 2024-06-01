@@ -19,12 +19,13 @@ from io import BytesIO
 
 def load_label_map():
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    label_map_path = os.path.join(base_dir, 'myproject', 'models', 'label_map_ver1.json')
+    label_map_path = os.path.join(base_dir, 'myproject', 'models', 'label_map_ver2.json')
 
     with open(label_map_path, 'r') as file:
         label_map = json.load(file)
 
     return label_map
+
 
 def home_view(request):
     return render(request, 'myproject/home.html')
